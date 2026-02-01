@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>🐼💘 Question importante</title>
+
+  <style>
+    :root{
+      --bg1:#f8cdda;
+      --bg2:#fbd3e9;
+      --card:#ffffffea;
+      --text:#1f1f1f;
+      --pink:#ff4d8d;
+      --pink2:#ff2f78;
+      --shadow: 0 20px 60px rgba(0,0,0,.12);
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: linear-gradient(135deg, #ffe3f0, #ffd6e7);
+      padding:24px;
+    }
+
+    .card{
+      width:min(720px, 94vw);
+      background:var(--card);
+      border-radius:28px;
+      box-shadow: var(--shadow);
+      padding:42px 28px 30px;
+      text-align:center;
+    }
+
+    /* 🐼 PANDA */
+    .mascot{
+      width:100px;
+      height:100px;
+      margin:0 auto 20px;
+      position:relative;
+    }
+
+    .face{
+      width:100px;
+      height:100px;
+      background:#fff;
+      border-radius:50%;
+      position:relative;
+      border:3px solid #111;
+    }
+
+    .ear{
+      width:30px;
+      height:30px;
+      background:#111;
+      border-radius:50%;
+      position:absolute;
+      top:-12px;
+    }
+    .ear.left{ left:5px; }
+    .ear.right{ right:5px; }
+
+    .eye{
+      width:18px;
+      height:18px;
+      background:#111;
+      border-radius:50%;
+      position:absolute;
+      top:40px;
+    }
+    .eye.left{ left:25px; }
+    .eye.right{ right:25px; }
+
+    .nose{
+      width:10px;
+      height:10px;
+      background:#111;
+      border-radius:50%;
+      position:absolute;
+      top:60px;
+      left:50%;
+      transform:translateX(-50%);
+    }
+
+    .heart{
+      position:absolute;
+      right:-8px;
+      top:-8px;
+      width:28px;
+      height:28px;
+      background: var(--pink);
+      transform: rotate(45deg);
+    }
+    .heart:before,.heart:after{
+      content:"";
+      position:absolute;
+      width:28px;
+      height:28px;
+      background: var(--pink);
+      border-radius:50%;
+    }
+    .heart:before{ left:-14px; }
+    .heart:after{ top:-14px; }
+
+    h1{
+      font-size: clamp(26px, 3vw, 36px);
+      margin-bottom:16px;
+    }
+
+    .sub{
+      opacity:.75;
+      margin-bottom:18px;
+    }
+
+    .btnRow{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      position:relative;
+      min-height:70px;
+    }
+
+    button{
+      border:0;
+      padding:14px 24px;
+      border-radius:999px;
+      font-size:16px;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .yes{
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      color:#fff;
+    }
+
+    .no{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.2);
+      position:relative;
+    }
+
+    .note{
+      font-size:13px;
+      opacity:.7;
+      margin-top:10px;
+      min-height:18px;
+    }
+
+    .result{
+      margin-top:18px;
+      font-size:20px;
+      font-weight:800;
+    }
+
+    /* confettis */
+    .confetti{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      display:none;
+    }
+    .confetti.show{display:block;}
+    .piece{
+      position:absolute;
+      top:-10px;
+      width:10px;
+      height:14px;
+      background:#ff4d8d;
+      animation: fall linear forwards;
+    }
+    @keyframes fall{
+      to{ transform: translateY(110vh) rotate(720deg); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <div class="mascot">
+      <div class="face">
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+        <div class="heart"></div>
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="nose"></div>
+      </div>
+    </div>
+
+    <h1>Basma, veux-tu être ma Valentine ? 💕</h1>
+    <p class="sub">Attention… le panda surveille ta réponse 🐼</p>
+
+    <div class="btnRow">
+      <button class="yes" id="yesBtn">Oui 💖</button>
+      <button class="no" id="noBtn">Non</button>
+    </div>
+
+    <div class="note" id="note">“Non” a l’air un peu timide 😈</div>
+    <div class="result" id="result"></div>
+
+  </div>
+
+  <div class="confetti" id="confetti"></div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const note = document.getElementById("note");
+    const result = document.getElementById("result");
+    const confetti = document.getElementById("confetti");
+
+    let tries = 0;
+
+    function rand(min, max){ return Math.random() * (max-min) + min; }
+
+    function moveNo(){
+      tries++;
+      note.textContent = [
+        "Le panda doute 🤔",
+        "Basma… vraiment ? 😏",
+        "Il va se cacher 🐼",
+        "Ok là c’est suspect 😂"
+      ][Math.min(tries-1,3)];
+
+      noBtn.style.position = "absolute";
+      noBtn.style.left = rand(20, 240) + "px";
+      noBtn.style.top  = rand(0, 50) + "px";
+    }
+
+    noBtn.addEventListener("mouseenter", moveNo);
+    noBtn.addEventListener("click", moveNo);
+
+    yesBtn.addEventListener("click", () => {
+      result.textContent = "YEEEES 🐼💖";
+      note.textContent = "Excellent choix 😌";
+
+      confetti.innerHTML = "";
+      confetti.classList.add("show");
+
+      for(let i=0;i<100;i++){
+        const p = document.createElement("div");
+        p.className="piece";
+        p.style.left = rand(0,100)+"vw";
+        p.style.animationDuration = rand(1.5,3)+"s";
+        confetti.appendChild(p);
+      }
+
+      setTimeout(()=>confetti.classList.remove("show"),3000);
+    });
+  </script>
+
+</body>
+</html>
