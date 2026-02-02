@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>🐼💘 Question importante</title>
+  <title>🐼💘 Valentine</title>
 
   <style>
     :root{
@@ -23,7 +23,7 @@
       min-height:100vh;
       display:grid;
       place-items:center;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
       background:
         radial-gradient(900px 650px at 20% 20%, #ffeaf3, transparent 60%),
         radial-gradient(900px 650px at 80% 80%, #ffd6e7, transparent 60%),
@@ -79,10 +79,9 @@
       width:34px;
       height:26px;
       background:#111;
-      border-radius: 18px;
+      border-radius:18px;
       position:absolute;
       top:38px;
-      opacity:.95;
     }
     .eyePatch.left{ left:18px; transform: rotate(-12deg); }
     .eyePatch.right{ right:18px; transform: rotate(12deg); }
@@ -109,7 +108,6 @@
       transform:translateX(-50%);
     }
 
-    /* 🙂 sourire */
     .mouth{
       position:absolute;
       left:50%;
@@ -124,7 +122,6 @@
       border-radius: 0 0 20px 20px;
     }
 
-    /* petit coeur */
     .heart{
       position:absolute;
       right:-10px;
@@ -133,8 +130,7 @@
       height:30px;
       background: var(--pink);
       transform: rotate(45deg);
-      filter: drop-shadow(0 10px 12px rgba(255,77,141,.25));
-      border-radius: 6px;
+      border-radius:6px;
     }
     .heart:before,.heart:after{
       content:"";
@@ -144,14 +140,13 @@
       background: var(--pink);
       border-radius:50%;
     }
-    .heart:before{ left:-15px; top:0; }
-    .heart:after{ left:0; top:-15px; }
+    .heart:before{ left:-15px; }
+    .heart:after{ top:-15px; }
 
     h1{
       font-size: clamp(26px, 3vw, 38px);
-      line-height:1.12;
+      line-height:1.15;
       margin:0 0 14px;
-      letter-spacing:-.02em;
     }
 
     .sub{
@@ -164,9 +159,7 @@
       margin-top:18px;
       display:flex;
       justify-content:center;
-      align-items:center;
       gap:14px;
-      flex-wrap:wrap;
       position:relative;
       min-height:76px;
     }
@@ -178,8 +171,6 @@
       font-size:16px;
       cursor:pointer;
       font-weight:800;
-      transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
-      user-select:none;
     }
 
     .yes{
@@ -187,15 +178,11 @@
       color:white;
       box-shadow: 0 16px 30px rgba(255,77,141,.22);
     }
-    .yes:hover{ transform: translateY(-1px) scale(1.02); }
 
     .no{
-      background: transparent;
-      color:#111;
+      background:transparent;
       border:1px solid rgba(0,0,0,.14);
-      padding:14px 26px;
       position:relative;
-      backdrop-filter: blur(10px);
     }
 
     .note{
@@ -211,20 +198,13 @@
       font-weight:900;
     }
 
-    .small{
-      font-size:13px;
-      opacity:.7;
-      margin-top:8px;
-    }
-
-    /* 🎉 confettis */
+    /* 🎉 confetti */
     .confetti{
       position:fixed;
       inset:0;
       pointer-events:none;
-      overflow:hidden;
-      z-index:9998;
       display:none;
+      z-index:9998;
     }
     .confetti.show{display:block;}
     .piece{
@@ -232,14 +212,13 @@
       top:-12px;
       width:10px;height:14px;
       border-radius:2px;
-      opacity:.95;
       animation: fall linear forwards;
     }
     @keyframes fall{
       to{ transform: translateY(110vh) rotate(680deg); }
     }
 
-    /* 🖼️ modal image */
+    /* 🖼️ modal */
     .modal{
       position:fixed;
       inset:0;
@@ -250,7 +229,7 @@
       padding:18px;
       z-index:9999;
     }
-    .modal.show{ display:flex; }
+    .modal.show{display:flex;}
 
     .modalBox{
       width:min(560px, 96vw);
@@ -260,11 +239,6 @@
       padding:14px;
       position:relative;
       text-align:center;
-      animation: pop .16s ease-out;
-    }
-    @keyframes pop{
-      from{ transform: scale(.96); opacity:.7; }
-      to{ transform: scale(1); opacity:1; }
     }
 
     .modalBox img{
@@ -286,181 +260,112 @@
       cursor:pointer;
       font-size:18px;
       font-weight:900;
-      line-height:1;
     }
 
     .caption{
-      margin:10px 6px 2px;
+      margin-top:10px;
       font-weight:900;
-      font-size:16px;
-    }
-    .caption2{
-      margin:0 6px 10px;
-      opacity:.75;
-      font-size:13px;
     }
   </style>
 </head>
 
 <body>
   <div class="card">
-    <div class="mascot" aria-hidden="true">
+    <div class="mascot">
       <div class="face">
         <div class="ear left"></div>
         <div class="ear right"></div>
-
         <div class="eyePatch left"></div>
         <div class="eyePatch right"></div>
         <div class="eye left"></div>
         <div class="eye right"></div>
-
         <div class="nose"></div>
         <div class="mouth"></div>
-
         <div class="heart"></div>
       </div>
     </div>
 
     <h1>Honey, would you like to be my Valentine this year? 💕</h1>
-    
-    <p class="sub">Le panda sourit déjà… il attend ton “Oui” 🐼🙂</p>
+    <p class="sub">The panda is already smiling 🐼🙂</p>
 
-    <div class="btnRow" id="btnRow">
-      <button class="yes" id="yesBtn">Oui 💖</button>
-      <button class="no" id="noBtn">Non</button>
+    <div class="btnRow">
+      <button class="yes" id="yesBtn">Yes 💖</button>
+      <button class="no" id="noBtn">No</button>
     </div>
 
-    <div class="note" id="note">“Non” a l’air un peu timide 😈</div>
+    <div class="note" id="note">“No” seems a little shy 😈</div>
     <div class="result" id="result"></div>
-    <div class="small" id="small"></div>
   </div>
 
-  <!-- 🖼️ MODAL SURPRISE -->
-  <div class="modal" id="modal" aria-hidden="true">
-    <div class="modalBox" role="dialog" aria-modal="true" aria-label="Surprise">
-      <button class="close" id="closeModal" aria-label="Fermer">✕</button>
-      <img id="surpriseImg" alt="Surprise 💖" />
-      <p class="caption">Surprise… 😌💖</p>
-      <p class="caption2">Tu viens de rendre ma journée parfaite.</p>
+  <div class="modal" id="modal">
+    <div class="modalBox">
+      <button class="close" id="closeModal">✕</button>
+      <img src="rose.png" alt="Surprise 💖">
+      <p class="caption">You just made my day 💖</p>
     </div>
   </div>
 
-  <!-- 🎉 CONFETTIS -->
   <div class="confetti" id="confetti"></div>
 
   <script>
-    // ====== Personnalisation ======
-    const girlfriendName = "Basma";       // change ici si besoin
-    const yourName = "";                 // ex: "— Charles"
-    const imageFileName = "rose.png";    // IMPORTANT: nom exact du fichier image uploadé sur GitHub
-
-    document.getElementById("name").textContent = girlfriendName;
-
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
     const note = document.getElementById("note");
     const result = document.getElementById("result");
-    const small = document.getElementById("small");
-    const btnRow = document.getElementById("btnRow");
-
     const modal = document.getElementById("modal");
     const closeModal = document.getElementById("closeModal");
-    const surpriseImg = document.getElementById("surpriseImg");
-
     const confetti = document.getElementById("confetti");
-
-    surpriseImg.src = imageFileName;
 
     let noCount = 0;
 
-    function rand(min, max){ return Math.random() * (max-min) + min; }
+    function rand(min,max){ return Math.random()*(max-min)+min; }
 
-    function moveNoButton(){
+    function moveNo(){
       noCount++;
-
-      const phrases = [
-        "Hmm… “Non” se cache 👀",
-        "Basma… sois gentille 😇",
-        "Tu veux vraiment cliquer “Non” ? 😏",
-        "Ok là tu forces 😂",
-        "Bon… on sait tous que c’est “Oui” 💘"
-      ];
-      note.textContent = phrases[Math.min(noCount-1, phrases.length-1)];
-
-      const card = document.querySelector(".card");
-      const cardRect = card.getBoundingClientRect();
-      const btnRect  = noBtn.getBoundingClientRect();
-
-      const padding = 20;
-      const maxX = cardRect.width - btnRect.width - padding;
-      const maxY = cardRect.height - btnRect.height - 160;
+      note.textContent = [
+        "Are you sure? 😏",
+        "Come on… 😇",
+        "It’s getting suspicious 😂",
+        "We both know it’s Yes 💖"
+      ][Math.min(noCount-1,3)];
 
       noBtn.style.position = "absolute";
-      noBtn.style.left = rand(padding, Math.max(padding, maxX)) + "px";
-      noBtn.style.top  = rand(220, Math.max(220, maxY)) + "px";
-
-      // rend le "Oui" plus tentant
-      const scale = Math.min(1.22, 1 + noCount * 0.035);
-      yesBtn.style.transform = `scale(${scale})`;
-      yesBtn.style.filter = `brightness(${1 + noCount*0.03})`;
+      noBtn.style.left = rand(20,240) + "px";
+      noBtn.style.top  = rand(0,50) + "px";
     }
 
     function makeConfetti(){
-      confetti.innerHTML = "";
+      confetti.innerHTML="";
       confetti.classList.add("show");
-
-      const colors = ["#ff4d8d","#ff2f78","#ffd1e3","#111","#fff"];
-      const pieces = 120;
-
-      for(let i=0;i<pieces;i++){
-        const d = document.createElement("div");
-        d.className = "piece";
-        d.style.left = rand(0, 100) + "vw";
-        d.style.background = colors[Math.floor(rand(0, colors.length))];
-        d.style.width  = rand(6, 12) + "px";
-        d.style.height = rand(8, 18) + "px";
-        d.style.animationDuration = rand(1.6, 3.2) + "s";
-        d.style.animationDelay    = rand(0, 0.4) + "s";
-        d.style.transform = `translateY(0) rotate(${rand(0,360)}deg)`;
+      const colors=["#ff4d8d","#ff2f78","#ffd1e3","#111","#fff"];
+      for(let i=0;i<120;i++){
+        const d=document.createElement("div");
+        d.className="piece";
+        d.style.left=rand(0,100)+"vw";
+        d.style.background=colors[Math.floor(rand(0,colors.length))];
+        d.style.animationDuration=rand(1.6,3.2)+"s";
         confetti.appendChild(d);
       }
-
-      setTimeout(() => confetti.classList.remove("show"), 3200);
+      setTimeout(()=>confetti.classList.remove("show"),3200);
     }
 
-    function openModal(){
-      modal.classList.add("show");
-      modal.setAttribute("aria-hidden", "false");
-    }
+    noBtn.addEventListener("mouseenter", moveNo);
+    noBtn.addEventListener("click", moveNo);
 
-    function closeIt(){
-      modal.classList.remove("show");
-      modal.setAttribute("aria-hidden", "true");
-    }
-
-    // Bouton "Non" qui fuit
-    noBtn.addEventListener("mouseenter", moveNoButton);
-    noBtn.addEventListener("click", moveNoButton);
-
-    // Oui = confetti + image
-    yesBtn.addEventListener("click", () => {
-      result.textContent = "YEEEES 🐼💖";
-      small.textContent = yourName ? yourName : "Ok… alors un date très bientôt ? 😌";
-      note.textContent = "Excellent choix 😌";
-
+    yesBtn.addEventListener("click", ()=>{
+      result.textContent="YEEEES 🐼💖";
+      note.textContent="Perfect choice 😌";
       makeConfetti();
-      openModal();
+      modal.classList.add("show");
     });
 
-    closeModal.addEventListener("click", closeIt);
-    modal.addEventListener("click", (e) => { if(e.target === modal) closeIt(); });
-
-    document.addEventListener("keydown", (e) => {
-      if(e.key === "Escape") closeIt();
-    });
+    closeModal.addEventListener("click", ()=>modal.classList.remove("show"));
+    modal.addEventListener("click", e=>{ if(e.target===modal) modal.classList.remove("show"); });
   </script>
 </body>
 </html>
+
+
 
 
 
